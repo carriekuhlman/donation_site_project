@@ -29,7 +29,7 @@ class Donor(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
     def __repr__(self): 
-        return f"<Donor donor_id={self.donor_id} name={self.fname}{self.lname}>"
+        return f"<Donor donor_id={self.donor_id} name={self.fname} {self.lname}>"
 
 
 class Org(db.Model):
@@ -59,12 +59,11 @@ class Location(db.Model):
     state = db.Column(db.String(2), nullable=False)
     zip_code = db.Column(db.String(10), nullable=False)
     accept_in_person = db.Column(db.Boolean, nullable=False)
-    donation_hours = db.Column(db.String(50), null)
-    org_id = db.Column(db.org_name, db.ForeignKey("orgs.org_id"))
+    donation_hours = db.Column(db.String(50))
+    org_id = db.Column(db.Integer, db.ForeignKey("orgs.org_id"))
 
     def __repr__(self): 
-        return f"<Location location_id={self.location_id} 
-        located in {self.city}, {self.state} for {self.org_id}>"
+        return f"<Location location_id={self.location_id} located in {self.city}, {self.state} for {self.org_id}>"
 
 
 class Item(db.Model):
@@ -79,8 +78,7 @@ class Item(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey("locations.location_id"))
 
     def __repr__(self): 
-        return f"<Item item_id={self.item_id} item_name={self.item_name} 
-        located at {self.location_id}>"
+        return f"<Item item_id={self.item_id} item_name={self.item_name} located at {self.location_id}>"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///donations", echo=True):
