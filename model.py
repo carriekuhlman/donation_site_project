@@ -32,11 +32,22 @@ class Donor(db.Model):
 class Org(db.Model):
     """An organization."""
 
-class Location(db.Model):
-    """A location for an organization."""
+    __tablename__ = "orgs"
 
-class Item(db.Model):
-    """An item that belongs to a location."""
+    org_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    org_name = db.Column(db.String(100))
+    org_description = db.Column(db.Text)
+    org_website = db.Column(db.String(100))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+
+    def __repr__(self): 
+        return f"<Org org_id={self.org_id} org_name={self.org_name}"
+
+# class Location(db.Model):
+#     """A location for an organization."""
+
+# class Item(db.Model):
+#     """An item that belongs to a location."""
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///donations", echo=True):
