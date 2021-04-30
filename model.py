@@ -43,8 +43,20 @@ class Org(db.Model):
     def __repr__(self): 
         return f"<Org org_id={self.org_id} org_name={self.org_name}"
 
-# class Location(db.Model):
-#     """A location for an organization."""
+class Location(db.Model):
+    """A location for an organization."""
+
+    __tablename__ = "locations"
+
+    location_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    phone = db.Column(db.String(50))
+    street_address = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    state = db.Column(db.String(2))
+    zip_code = db.Column(db.String(10))
+    accept_in_person = db.Column(db.Boolean)
+    donation_hours = db.Column(db.String(50), null)
+    org_id = db.Column(db.Integer, db.ForeignKey("orgs.org_id"))
 
 # class Item(db.Model):
 #     """An item that belongs to a location."""
