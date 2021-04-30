@@ -60,11 +60,11 @@ class Location(db.Model):
     zip_code = db.Column(db.String(10), nullable=False)
     accept_in_person = db.Column(db.Boolean, nullable=False)
     donation_hours = db.Column(db.String(50), null)
-    org_name = db.Column(db.org_name, db.ForeignKey("orgs.org_name"))
+    org_id = db.Column(db.org_name, db.ForeignKey("orgs.org_id"))
 
     def __repr__(self): 
         return f"<Location location_id={self.location_id} 
-        located in {self.city}, {self.state} for {self.org_name}>"
+        located in {self.city}, {self.state} for {self.org_id}>"
 
 
 class Item(db.Model):
