@@ -22,6 +22,16 @@ def create_donor(fname, lname, user_id):
 
     return donor
 
+def create_org(org_name, org_description, org_website, user_id):
+    """Create and retun a new org."""
+
+    org = Org(org_name=org_name, org_description=org_description, org_website=org_website, user_id=user_id)
+
+    db.session.add(org)
+    db.session.commit()
+
+    return org
+
 
 
 if __name__ == "__main__": 
