@@ -260,6 +260,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.donors (donor_id, fname, lname, user_id) FROM stdin;
+1	John	McTest	1
 \.
 
 
@@ -268,6 +269,7 @@ COPY public.donors (donor_id, fname, lname, user_id) FROM stdin;
 --
 
 COPY public.items (item_id, item_name, condition_accepted, qty_needed, location_id) FROM stdin;
+1	blanket	new	10	1
 \.
 
 
@@ -276,6 +278,7 @@ COPY public.items (item_id, item_name, condition_accepted, qty_needed, location_
 --
 
 COPY public.locations (location_id, phone, street_address, city, state, zip_code, accept_in_person, donation_hours, org_id) FROM stdin;
+1	111-111-1111	123 Test Street	Los Angeles	CA	11111	t	7am-10am	1
 \.
 
 
@@ -284,6 +287,7 @@ COPY public.locations (location_id, phone, street_address, city, state, zip_code
 --
 
 COPY public.orgs (org_id, org_name, org_description, org_website, user_id) FROM stdin;
+1	The Testing Company	We test stuff.	www.testingcompany.test	2
 \.
 
 
@@ -293,6 +297,7 @@ COPY public.orgs (org_id, org_name, org_description, org_website, user_id) FROM 
 
 COPY public.users (user_id, email, password) FROM stdin;
 1	test@test.com	testing123
+2	test_again@test.test	testing456
 \.
 
 
@@ -300,35 +305,35 @@ COPY public.users (user_id, email, password) FROM stdin;
 -- Name: donors_donor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.donors_donor_id_seq', 1, false);
+SELECT pg_catalog.setval('public.donors_donor_id_seq', 1, true);
 
 
 --
 -- Name: items_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.items_item_id_seq', 1, false);
+SELECT pg_catalog.setval('public.items_item_id_seq', 1, true);
 
 
 --
 -- Name: locations_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.locations_location_id_seq', 1, false);
+SELECT pg_catalog.setval('public.locations_location_id_seq', 1, true);
 
 
 --
 -- Name: orgs_org_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.orgs_org_id_seq', 1, false);
+SELECT pg_catalog.setval('public.orgs_org_id_seq', 1, true);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
 
 
 --
