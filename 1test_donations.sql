@@ -42,7 +42,7 @@ CREATE TABLE public.donors (
     donor_id integer NOT NULL,
     fname character varying(50) NOT NULL,
     lname character varying(50) NOT NULL,
-    user_id integer
+    user_id integer NOT NULL
 );
 
 
@@ -79,7 +79,7 @@ CREATE TABLE public.items (
     item_name character varying(50) NOT NULL,
     condition_accepted character varying(50) NOT NULL,
     qty_needed integer,
-    location_id integer
+    location_id integer NOT NULL
 );
 
 
@@ -120,7 +120,7 @@ CREATE TABLE public.locations (
     zip_code character varying(10) NOT NULL,
     accept_in_person boolean NOT NULL,
     donation_hours character varying(50),
-    org_id integer
+    org_id integer NOT NULL
 );
 
 
@@ -157,7 +157,7 @@ CREATE TABLE public.orgs (
     org_name character varying(100) NOT NULL,
     org_description text,
     org_website character varying(100),
-    user_id integer
+    user_id integer NOT NULL
 );
 
 
@@ -260,7 +260,6 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.donors (donor_id, fname, lname, user_id) FROM stdin;
-1	test	Testing	1
 \.
 
 
@@ -269,7 +268,6 @@ COPY public.donors (donor_id, fname, lname, user_id) FROM stdin;
 --
 
 COPY public.items (item_id, item_name, condition_accepted, qty_needed, location_id) FROM stdin;
-1	blanket	new	5	1
 \.
 
 
@@ -278,7 +276,6 @@ COPY public.items (item_id, item_name, condition_accepted, qty_needed, location_
 --
 
 COPY public.locations (location_id, phone, street_address, city, state, zip_code, accept_in_person, donation_hours, org_id) FROM stdin;
-1	111-111-1111	123 Test Street	Test Angeles	CA	11111	t	1pm-5pm	1
 \.
 
 
@@ -287,7 +284,6 @@ COPY public.locations (location_id, phone, street_address, city, state, zip_code
 --
 
 COPY public.orgs (org_id, org_name, org_description, org_website, user_id) FROM stdin;
-1	The Test Org	We love tests!	www.donationtest.com	2
 \.
 
 
@@ -296,8 +292,7 @@ COPY public.orgs (org_id, org_name, org_description, org_website, user_id) FROM 
 --
 
 COPY public.users (user_id, email, password) FROM stdin;
-1	test@test.test	test
-2	test2@test.test	test
+1	test@test.com	testing123
 \.
 
 
@@ -305,35 +300,35 @@ COPY public.users (user_id, email, password) FROM stdin;
 -- Name: donors_donor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.donors_donor_id_seq', 1, true);
+SELECT pg_catalog.setval('public.donors_donor_id_seq', 1, false);
 
 
 --
 -- Name: items_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.items_item_id_seq', 1, true);
+SELECT pg_catalog.setval('public.items_item_id_seq', 1, false);
 
 
 --
 -- Name: locations_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.locations_location_id_seq', 1, true);
+SELECT pg_catalog.setval('public.locations_location_id_seq', 1, false);
 
 
 --
 -- Name: orgs_org_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.orgs_org_id_seq', 1, true);
+SELECT pg_catalog.setval('public.orgs_org_id_seq', 1, false);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 1, true);
 
 
 --
