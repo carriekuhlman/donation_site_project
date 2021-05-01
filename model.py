@@ -14,8 +14,8 @@ class User(db.Model):
     email = db.Column(db.String(320), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False)
 
-    donor = db.relationship("Donor")
-    org = db.relationship("Org")
+    donor = db.relationship("Donor", backref="user")
+    org = db.relationship("Org", backref="user")
 
     def __repr__(self): 
         return f"<User user_id={self.user_id} email={self.email}>"
@@ -31,7 +31,7 @@ class Donor(db.Model):
     lname = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
-    user = db.relationship("User")
+    # user = a User object
 
     def __repr__(self): 
         return f"<Donor donor_id={self.donor_id} name={self.fname} {self.lname}>"
@@ -48,7 +48,7 @@ class Org(db.Model):
     org_website = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
-    user = db.relationship("User")
+    # user = a User object
     # locations = a list of Location objects
 
     def __repr__(self): 
