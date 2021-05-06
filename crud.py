@@ -32,8 +32,14 @@ def create_org(org_name, user_id, org_description=None, org_website=None):
 
     return org
 
-# def create_location(phone, street_address, city, state, zip_code, accept_in_person, donation_hours, org_id)
+def create_location(phone, street_address, city, state, zip_code, accept_in_person, org_id, donation_hours=None): 
+     
+     location = Location(phone=phone, street_address=street_address, city=city, state=state, zip_code=zip_code, accept_in_person=accept_in_person, donation_hours=donation_hours, org_id=org_id)
 
+     db.session.add(location)
+     db.session.commit()
+
+     return location
 
 
 if __name__ == "__main__": 
