@@ -41,6 +41,15 @@ def create_location(phone, street_address, city, state, zip_code, accept_in_pers
 
      return location
 
+def create_item(item_name, condition_accepted, location_id, qty_needed=None):
+
+    item = Item(item_name=item_name, condition_accepted=condition_accepted, location_id=location_id, qty_needed=qty_needed)
+
+    db.session.add(item)
+    db.session.commit()
+
+    return item
+
 
 if __name__ == "__main__": 
     from server import app
