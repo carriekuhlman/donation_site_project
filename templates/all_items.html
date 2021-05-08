@@ -1,0 +1,9 @@
+{% extends 'base.html' %} 
+{% block title %}All Items{% endblock %} 
+
+{% block body %} 
+{% for item in items %} 
+    <p>{{ item }}</p>
+{% endfor %} 
+{% endblock %} 
+
