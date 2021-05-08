@@ -74,7 +74,7 @@ class Location(db.Model):
     # items = a list of Item objects
 
     def __repr__(self): 
-        return f"<Location location_id={self.location_id} located in {self.city}, {self.state} for {self.org_id}>"
+        return f"<Location location_id={self.location_id} located in {self.city}, {self.state} for {self.org.org_name}>"
 
 
 class Item(db.Model):
@@ -91,7 +91,7 @@ class Item(db.Model):
     location = db.relationship("Location", backref="items")
 
     def __repr__(self): 
-        return f"<Item item_id={self.item_id} item_name={self.item_name} located at {self.location_id}>"
+        return f"<Item item_id={self.item_id} item_name={self.item_name} located in {self.location.city}, {self.location.state} for {self.location.org.org_name}>"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///donations", echo=True):
