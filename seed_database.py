@@ -13,7 +13,6 @@ os.system('createdb donations')
 model.connect_to_db(server.app)
 model.db.create_all()
 
-
 # Create list to store user objects, create 10 users
 
 users_in_db = []
@@ -26,7 +25,7 @@ for a in range(1, 11):
 
     users_in_db.append(user)
 
-# Create 5 donors, link to a user
+# Create 5 donors, link to a random user
 
 for i in range(1, 6): 
     fname = f"Donor{i}"
@@ -36,7 +35,7 @@ for i in range(1, 6):
     users_in_db.remove(donor_random_user)
     donor = crud.create_donor(fname, lname, donor_random_user)
 
-# #Create list to store orgs, Create 5 orgs, link to a random user
+# #Create list to store org objects, Create 5 orgs, link to a random user
 
 orgs_in_db = []
 
@@ -56,7 +55,7 @@ for y in range(1, 6):
 
     orgs_in_db.append(org)
 
-# #Create list to store locations, Create 5 locations, link to an org
+# #Create list to store location objects, Create 5 locations, link to a random org
 
 locations_in_db = []
 t_or_f = [True, False]
@@ -69,7 +68,11 @@ for x in range(1, 6):
     state = "CA"
     zip_code = "91303"
     accept_in_person = choice(t_or_f)
-    donation_hours = f"{x}am to {x}pm"
+
+    if accept_in_person:
+        donation_hours = f"{x}am to {x}pm"
+    else:
+        donation_hours = None
 
     random_org = choice(orgs_in_db)
     orgs_in_db.remove(random_org)
@@ -85,9 +88,9 @@ for x in range(1, 6):
 
     locations_in_db.append(location)
 
-# #Create 10 items, link to locations
+# #Create 20 items, link to random location
 
-conditions = ["New", "Slightly Used", "For Scraps"]
+conditions = ["New", "Lightly Used", "For Scraps"]
 
 for z in range(1, 21): 
     
