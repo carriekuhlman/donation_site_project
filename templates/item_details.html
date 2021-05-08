@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block title %}Item Details{% endblock %} 
+
+{% block body %} 
+    <h1>Item Details</h1>
+
+    <p>
+        Item ID: {{ item.item_id }}<br />
+        Item Name: {{ item.item_name }}<br />
+        Condition Accepted: {{ item.condition_accepted }}<br />
+        Quantity Needed: {{ item.qty_needed }}<br />
+        Organization: {{ item.location.org.org_name}}<br />
+        Item Location: {{ item.location.city }}, {{ item.location.state }} {{  item.location.zip_code }}
+    </p>
+{% endblock %} 
