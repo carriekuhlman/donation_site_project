@@ -19,6 +19,15 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/items')
+def all_items():
+    """View all items."""
+
+    items = crud.get_items()
+
+    return render_template('all_items.html', items=items)
+
+
 
 
 if __name__ == "__main__": 
