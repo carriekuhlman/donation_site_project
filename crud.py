@@ -71,6 +71,12 @@ def get_items():
 
     return Item.query.all()
 
+def get_item_by_id(item_id):
+    """Get item by item ID."""
+
+    return Item.query.get(item_id)
+
+
 
 
 if __name__ == "__main__": 

@@ -27,6 +27,14 @@ def all_items():
 
     return render_template('all_items.html', items=items)
 
+@app.route('/items/<item_id>')
+def show_item(item_id):
+    """Show details of a particular item."""
+
+    item = crud.get_item_by_id(item_id)
+
+    return render_template('item_details.html', item=item)
+
 
 
 
