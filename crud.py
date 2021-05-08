@@ -66,6 +66,12 @@ def create_item(item_name, condition_accepted, location, qty_needed=None):
 
     return item
 
+def get_items():
+    """Return all items."""
+
+    return Item.query.all()
+
+
 
 if __name__ == "__main__": 
     from server import app
