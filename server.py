@@ -35,6 +35,22 @@ def show_item(item_id):
 
     return render_template('item_details.html', item=item)
 
+@app.route('/users', methods=['POST'])
+def register_user():
+    """Create a new user."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    if user:
+        flash("A user with that email address already exists.")
+    else:
+        crud.create_user(email, password)
+        flash("Account created! Please log in.")
+
+    return redirect('/')
+
 
 
 

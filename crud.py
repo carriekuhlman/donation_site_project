@@ -76,8 +76,11 @@ def get_item_by_id(item_id):
 
     return Item.query.get(item_id)
 
+def get_user_by_email(email): 
+    """Return a user by email."""
 
-
+    return User.query.filter(User.email == email).first()
+    
 
 if __name__ == "__main__": 
     from server import app
