@@ -4,7 +4,7 @@
 {% block body %} 
     <h1>CREATE ORG</h1>
 
-    <h2>Create an Account</h2>
+    <h2>Create an Organization Account</h2>
     <form action="/users" method="POST">
         <p>
             Email <input type="text" name="email">
@@ -12,6 +12,18 @@
 
         <p>
             Password <input type="password" name="password">
+        </p>
+
+        <p>
+            Organization Name <input type="text" name="org_name">
+        </p>
+
+        <p>
+            Organization Description <input type="text" name="org_description">
+        </p>
+
+        <p>
+            Organization Website <input type="text" name="org_website">
         </p>
 
         <p>
