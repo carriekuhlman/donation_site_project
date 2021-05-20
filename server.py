@@ -19,6 +19,24 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/login')
+def login():
+    """Log in to account."""
+
+    return render_template('login.html')
+
+@app.route('/create-donor')
+def create_donor():
+    """Create donor account."""
+
+    return render_template('create_donor.html')
+
+@app.route('/create-org')
+def create_org():
+    """Create org account."""
+
+    return render_template('create_org.html')
+
 @app.route('/items')
 def all_items():
     """View all items."""
