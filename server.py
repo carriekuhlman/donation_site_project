@@ -38,12 +38,20 @@ def create_org():
     return render_template('create_org.html')
 
 @app.route('/items')
-def all_items():
-    """View all items."""
+def search_items():
+    """View item search results."""
 
-    items = crud.get_items()
+    return render_template('search_items.html')
 
-    return render_template('all_items.html', items=items)
+@app.route('/search-results')
+def search_results():
+    """View item search results."""
+
+    searched_item = request.form.get('item')
+
+    item = crud.search_items(searched_item)
+
+    return render_template('search_results.html', item=item)
 
 @app.route('/items/<item_id>')
 def show_item(item_id):
