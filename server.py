@@ -89,6 +89,27 @@ def register_donor():
 
     return redirect('/')
 
+@app.route('/org', methods=['POST'])
+def register_org():
+    """Create a new org."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+    org_name = request.form.get('org_name')
+    org_description = request.form.get('org_description')
+    org_website = request.form.get('org_website')
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash("A user with that email address already exists.")
+    else:
+        new_user = crud.create_user(email, password)
+        crud.create_org(org_name, new_user, org_description, org_website)
+        flash("Organization account created! Please log in.")
+
+    return redirect('/')
+
 
 if __name__ == "__main__": 
     connect_to_db(app)
