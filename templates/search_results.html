@@ -4,7 +4,14 @@
 {% block body %} 
     <h1>Search Results</h1>
 
-    <p>
-        {{ item.item_name }}
-    </p>
+    <ul>
+        {% for item in items %} 
+            <li>
+                <a href="/items/{{ item.item_id }}">
+                    {{ item.item_name }}
+                </a>
+            </li>
+
+        {% endfor %}
+    </ul>
 {% endblock %} 

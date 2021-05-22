@@ -48,12 +48,9 @@ def search_results():
     """View item search results."""
 
     searched_item = request.args.get('item')
-    # print(type(searched_item))
-    # return "success"
+    items = crud.search_items(searched_item)
 
-    item = crud.search_items(searched_item)
-
-    return render_template('search_results.html', item=item)
+    return render_template('search_results.html', items=items)
 
 @app.route('/items/<item_id>')
 def show_item(item_id):

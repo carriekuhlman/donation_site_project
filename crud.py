@@ -76,10 +76,11 @@ def get_item_by_id(item_id):
 
     return Item.query.get(item_id)
 
-def search_items(item_name):
+def search_items(searched_item):
     """Search for item by name."""
 
-    return Item.query.filter(Item.item_name == item_name).first()
+    # return Item.query.filter(Item.item_name == item_name).first()
+    return Item.query.filter(Item.item_name.like(f"%{searched_item}%"))
 
 def get_user_by_email(email): 
     """Return a user by email."""
