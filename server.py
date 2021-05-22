@@ -39,7 +39,7 @@ def create_org():
 
 @app.route('/items')
 def search_items():
-    """View item search results."""
+    """Search for item."""
 
     return render_template('search_items.html')
 
@@ -47,7 +47,9 @@ def search_items():
 def search_results():
     """View item search results."""
 
-    searched_item = request.form.get('item')
+    searched_item = request.args.get('item')
+    # print(type(searched_item))
+    # return "success"
 
     item = crud.search_items(searched_item)
 
