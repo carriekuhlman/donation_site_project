@@ -96,6 +96,8 @@ def verify_credentials(user, password):
 def org_or_donor(user):
     """Check to see if org or donor."""
 
+    #returns a donor object if user_id is in donor table
+
     return Donor.query.filter(Donor.user_id == user.user_id).first()
     
 
