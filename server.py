@@ -67,11 +67,11 @@ def verify_user():
     email = request.args.get('email')
     password = request.args.get('password')
     user = crud.get_user_by_email(email)
-    verify = crud.verify_credentials(user, password)
-    user_type = crud.org_or_donor(user)
-
+    
     if user:
+        verify = crud.verify_credentials(user, password)
         if verify:
+            user_type = crud.org_or_donor(user)
             if user_type: 
                 return render_template('donor_home.html')
             else: 
@@ -79,10 +79,11 @@ def verify_user():
         else: 
             flash("Invalid credentials. Try again.")
             return redirect('/login')
-        
-    else:
+
+    else:     
         flash("An account with this email does not exist. Please create an account.")
-        return redirect('/')
+    
+    return redirect('/')
 
 @app.route('/donor', methods=['POST'])
 def register_donor():
