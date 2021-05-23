@@ -79,13 +79,24 @@ def get_item_by_id(item_id):
 def search_items(searched_item):
     """Search for item by name."""
 
-    # return Item.query.filter(Item.item_name == item_name).first()
     return Item.query.filter(Item.item_name.like(f"%{searched_item}%"))
 
 def get_user_by_email(email): 
     """Return a user by email."""
 
     return User.query.filter(User.email == email).first()
+
+def verify_credentials(user, password): 
+    """Verify user credentials."""
+
+    #check to confirm that username and password match
+
+    return User.query.filter(user.password == password).first()
+
+def org_or_donor(user):
+    """Check to see if org or donor."""
+
+    return Donor.query.filter(Donor.user_id == user.user_id).first()
     
 
 if __name__ == "__main__": 

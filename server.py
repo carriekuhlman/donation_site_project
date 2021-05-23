@@ -60,21 +60,29 @@ def show_item(item_id):
 
     return render_template('item_details.html', item=item)
 
-@app.route('/users', methods=['POST'])
-def register_user():
-    """Create a new user."""
+@app.route('/users')
+def verify_user():
+    """Verify creds and route to donor or org page."""
 
-    email = request.form.get('email')
-    password = request.form.get('password')
-
+    email = request.args.get('email')
+    password = request.args.get('password')
     user = crud.get_user_by_email(email)
-    if user:
-        flash("A user with that email address already exists.")
-    else:
-        crud.create_user(email, password)
-        flash("Account created! Please log in.")
+    verify = crud.verify_credentials(user, password)
+    user_type = crud.org_or_donor(user)
 
-    return redirect('/')
+    if user:
+        if verify:
+            if user_type: 
+                return render_template('donor_home.html')
+            else: 
+                return render_template('org_home.html') 
+        else: 
+            flash("Invalid credentials. Try again.")
+            return redirect('/login')
+        
+    else:
+        flash("An account with this email does not exist. Please create an account.")
+        return redirect('/')
 
 @app.route('/donor', methods=['POST'])
 def register_donor():
