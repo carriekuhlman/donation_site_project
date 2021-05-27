@@ -126,19 +126,19 @@ def register_org():
 
     return redirect('/')
 
-@app.route('/add_location')
+@app.route('/add-location')
 def add_location(): 
     """Add location to an organization."""
 
-@app.route('/view_locations')
+@app.route('/view-locations')
 def view_locations(): 
     """View current locations."""
 
-@app.route('/add_item')
+@app.route('/add-item')
 def add_item(): 
     """Add item to location."""
 
-@app.route('/view_items')
+@app.route('/view-items')
 def view_items(): 
     """View current items."""
 
