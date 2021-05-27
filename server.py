@@ -126,6 +126,24 @@ def register_org():
 
     return redirect('/')
 
+@app.route('/add_location')
+def add_location(): 
+    """Add location to an organization."""
+
+@app.route('/view_locations')
+def view_locations(): 
+    """View current locations."""
+
+@app.route('/add_item')
+def add_item(): 
+    """Add item to location."""
+
+@app.route('/view_items')
+def view_items(): 
+    """View current items."""
+
+
+
 
 if __name__ == "__main__": 
     connect_to_db(app)
