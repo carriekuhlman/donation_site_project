@@ -99,8 +99,13 @@ def org_or_donor(user):
     #returns a donor object if user_id is in donor table
 
     return Donor.query.filter(Donor.user_id == user.user_id).first()
-    
 
+def get_org_by_id(org_id):
+    """Get org by org ID."""
+
+    return Org.query.get(org_id)
+    
+    
 if __name__ == "__main__": 
     from server import app
     connect_to_db(app)

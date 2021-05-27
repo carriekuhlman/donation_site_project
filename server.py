@@ -126,9 +126,19 @@ def register_org():
 
     return redirect('/')
 
+@app.route('/org/<org_id>')
+def show_org(org_id):
+    """Show details of a particular org."""
+
+    org = crud.get_org_by_id(org_id)
+
+    return render_template('org_details.html', org=org)
+
 @app.route('/add-location')
 def add_location(): 
     """Add location to an organization."""
+
+    return render_template('create_location.html')
 
 @app.route('/view-locations')
 def view_locations(): 
