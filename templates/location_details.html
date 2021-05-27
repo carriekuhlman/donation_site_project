@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block title %}Location Details{% endblock %} 
+
+{% block body %} 
+    <h1>Location Details</h1>
+    <p>
+        Organization Name: {{ location.org.org_name }}<br />
+        Location Address: {{ location.street_address }}<br />
+        Location City: {{ location.city }}<br />
+        Location State: {{ location.state }}<br />
+        Location Zip Code: {{ location.zip_code }}<br />
+        Accept in Person? {{ location.accept_in_person }}<br />
+        Donation Hours: {{ location.donation_hours }}<br />
+    </p>
+{% endblock %} 

@@ -134,6 +134,14 @@ def show_org(org_id):
 
     return render_template('org_details.html', org=org)
 
+@app.route('/location/<location_id>')
+def show_location(location_id):
+    """Show details of a particular location."""
+
+    location = crud.get_location_by_id(location_id)
+
+    return render_template('location_details.html', location=location)
+
 @app.route('/add-location')
 def add_location(): 
     """Add location to an organization."""

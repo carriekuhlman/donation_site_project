@@ -18,7 +18,7 @@
         <tr>
             <th>Item Name</th>
             <th>Item Organization</th>
-            <th>Item Zip Code</th>
+            <th>Item Location</th>
             <th>Qty Needed</th>
             <th>Condition Accepted</th>
         </tr>
@@ -30,7 +30,11 @@
                     {{ item.location.org.org_name }}
                     </a>
                 </td>
-                <td>{{ item.location.zip_code }}</td>
+                <td>
+                    <a href='/location/{{ item.location.location_id }}'>
+                    {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
+                    </a>
+                </td>
                 <td>{{ item.qty_needed }}</td>
                 <td>{{ item.condition_accepted }}</td>
             </tr>

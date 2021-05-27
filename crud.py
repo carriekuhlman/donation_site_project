@@ -104,8 +104,13 @@ def get_org_by_id(org_id):
     """Get org by org ID."""
 
     return Org.query.get(org_id)
+
+def get_location_by_id(location_id):
+    """Get org by org ID."""
+
+    return Location.query.get(location_id)
     
-    
+
 if __name__ == "__main__": 
     from server import app
     connect_to_db(app)
