@@ -8,7 +8,7 @@ import crud
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
-app.secret_key = "dev"
+app.secret_key = "$JI06eiH!czwY&xGSs*QttAL"
 app.jinja_env.undefined = StrictUndefined
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
