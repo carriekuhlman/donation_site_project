@@ -17,6 +17,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def homepage():
     """View homepage."""
 
+    if 'username' in session: 
+            flash("Logged in!")
     return render_template('homepage.html')
 
 @app.route('/login')
@@ -70,6 +72,7 @@ def verify_user():
     
     if user:
         verify = crud.verify_credentials(user, password)
+        session['username'] = request.form['email']
         if verify:
             user_type = crud.org_or_donor(user)
             if user_type: 
@@ -160,6 +163,14 @@ def add_item():
 def view_items(): 
     """View current items."""
 
+@app.route('/logout')
+def user_logout(): 
+    """Remove the user from the session"""
+
+    session.pop('username', None)
+    flash("Successfully logged out.")
+
+    return redirect('/')
 
 
 
