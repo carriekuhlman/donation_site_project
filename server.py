@@ -60,12 +60,12 @@ def show_item(item_id):
 
     return render_template('item_details.html', item=item)
 
-@app.route('/users')
+@app.route('/users', methods=['POST'])
 def verify_user():
     """Verify creds and route to donor or org page."""
 
-    email = request.args.get('email')
-    password = request.args.get('password')
+    email = request.form.get('email')
+    password = request.form.get('password')
     user = crud.get_user_by_email(email)
     
     if user:
