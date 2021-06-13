@@ -62,31 +62,44 @@ def show_item(item_id):
 
     return render_template('item_details.html', item=item)
 
-@app.route('/users', methods=['POST'])
+@app.route('/account', methods=['GET', 'POST'])
 def verify_user():
     """Verify creds and route to donor or org page."""
 
-    email = request.form.get('email')
-    password = request.form.get('password')
-    user = crud.get_user_by_email(email)
-    
-    if user:
-        verify = crud.verify_credentials(user, password)
-        session['username'] = request.form['email']
-        if verify:
-            user_type = crud.org_or_donor(user)
-            if user_type: 
-                return render_template('donor_home.html')
-            else: 
-                return render_template('org_home.html') 
-        else: 
-            flash("Invalid credentials. Try again.")
-            return redirect('/login')
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = crud.get_user_by_email(email)
 
-    else:     
-        flash("An account with this email does not exist. Please create an account.")
-    
-    return redirect('/')
+        if user:
+            verify = crud.verify_credentials(user, password)
+            session['username'] = request.form['email']
+            if verify:
+                user_type = crud.org_or_donor(user)
+                if user_type: 
+                    return render_template('donor_home.html')
+                else: 
+                    return render_template('org_home.html') 
+            else: 
+                flash("Invalid credentials. Try again.")
+                return redirect('/login')
+
+        else:     
+            flash("An account with this email does not exist. Please create an account.")
+        
+        return redirect('/')
+
+    elif "username" in session and request.method == "GET": 
+        user = crud.get_user_by_email(session["username"])
+        user_type = crud.org_or_donor(user)
+        if user_type: 
+            return render_template('donor_home.html')
+        else: 
+            return render_template('org_home.html') 
+
+    else:
+        flash("Please log in.")
+        return redirect('/')
 
 @app.route('/donor', methods=['POST'])
 def register_donor():
