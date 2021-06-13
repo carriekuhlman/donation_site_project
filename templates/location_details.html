@@ -9,7 +9,11 @@
         Location City: {{ location.city }}<br />
         Location State: {{ location.state }}<br />
         Location Zip Code: {{ location.zip_code }}<br />
-        Accept in Person? {{ location.accept_in_person }}<br />
-        Donation Hours: {{ location.donation_hours }}<br />
+    
+        {% if location.accept_in_person %}
+            In-Person Donation Hours: {{ location.donation_hours }}<br />
+        {% else %} 
+            In-Person Donations Not Accepted<br />
+        {% endif %}
     </p>
 {% endblock %} 
