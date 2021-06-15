@@ -158,11 +158,33 @@ def show_location(location_id):
 
     return render_template('location_details.html', location=location)
 
-@app.route('/add-location')
+@app.route('/add-location', methods=["POST"])
 def add_location(): 
     """Add location to an organization."""
 
-    return render_template('create_location.html')
+    user = crud.get_user_by_email(session["username"])
+    org = crud.get_org_by_user(user)
+
+    phone = request.form.get('phone')
+    address = request.form.get('address')
+    city = request.form.get('city')
+    state = request.form.get('state')
+    zip_code = request.form.get('zip_code')
+    in_person = request.form.get('in_person')
+
+    if in_person == "True": 
+        in_person = True
+        donation_hours = request.form.get('donation_hours')
+
+    else:
+        in_person = False
+        donation_hours = None
+
+    crud.create_location(phone, address, city, state, zip_code,
+                    in_person, org, donation_hours)
+
+    flash("Location added successfully.")
+    return redirect('/account')
 
 @app.route('/view-locations')
 def view_locations(): 

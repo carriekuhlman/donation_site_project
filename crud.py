@@ -105,6 +105,11 @@ def get_org_by_id(org_id):
 
     return Org.query.get(org_id)
 
+def get_org_by_user(user):
+    """Get org by user."""
+
+    return Org.query.filter(Org.user_id == user.user_id).first()
+
 def get_location_by_id(location_id):
     """Get org by org ID."""
 

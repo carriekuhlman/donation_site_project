@@ -6,9 +6,49 @@
 
     <h2>Navigation</h2>
     <ul>
-        <li>We need to add a location. <a href="/add_location">Add location</a></li>
         <li>We need view current locations. <a href="/locations">View locations</a></li>
         <li>We need items! <a href="/add_items">Request items</a></li>
         <li>Show currently listed items. <a href="/view_items">Show items</a></li>
     </ul>
+
+    <h2>Add Location</h2>
+    <form action="/add-location" method="POST">
+        <p>
+            Phone <input type="text" name="phone">
+        </p>
+
+        <p>
+            Address <input type="text" name="address">
+        </p>
+
+        <p>
+            City <input type="text" name="city">
+        </p>
+
+        <p>
+            State <input type="text" name="state">
+        </p>
+
+        <p>
+            Zip Code <input type="text" name="zip_code">
+        </p>
+
+        <p>
+            Are in person donations accepted? 
+            <input type="radio" name="in_person" value="True">
+            <label>Yes</label>
+
+            <input type="radio" name="in_person" value="False" checked>
+            <label>No</label>
+        </p>
+
+        <p>
+            If in person donations are accepted, what are the hours? 
+            <input type="text" name="donation_hours">
+        </p>
+
+        <p>
+            <input type="submit">
+        </p>
+    </form>
 {% endblock %}
