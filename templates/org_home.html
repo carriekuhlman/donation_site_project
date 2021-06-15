@@ -51,4 +51,37 @@
             <input type="submit">
         </p>
     </form>
+
+    <h2>Request Item</h2>
+    <form action="/request-item" method="POST">
+        <p>
+            Item Name/Description <input type="text" name="item_name">
+        </p>
+
+        <p>
+            Condition Accepted:
+            <select name="condition">
+                <option value="new">New</option>
+                <option value="lightly_used">Lightly Used</option>
+                <option value="for_scraps">For Scraps</option>
+            </select>
+        </p>
+
+        <p>
+            Quantity Needed <input type="text" name="qty_needed">
+        </p>
+
+        <p>
+            Location:
+            <select name="location">
+                {% for location in locations %}
+                    <option value="{{ location }}">{{ location.location_id }}</option>
+                {% endfor %}
+              </select>
+        </p>
+
+        <p>
+            <input type="submit">
+        </p>
+    </form>
 {% endblock %}

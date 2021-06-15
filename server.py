@@ -79,7 +79,9 @@ def verify_user():
                 if user_type: 
                     return render_template('donor_home.html')
                 else: 
-                    return render_template('org_home.html') 
+                    org = crud.get_org_by_user(user)
+                    locations = crud.view_all_org_locations(org)
+                    return render_template('org_home.html', locations=locations) 
             else: 
                 flash("Invalid credentials. Try again.")
                 return redirect('/login')
@@ -95,7 +97,9 @@ def verify_user():
         if user_type: 
             return render_template('donor_home.html')
         else: 
-            return render_template('org_home.html') 
+            org = crud.get_org_by_user(user)
+            locations = crud.view_all_org_locations(org)
+            return render_template('org_home.html', locations=locations) 
 
     else:
         flash("Please log in.")
@@ -190,9 +194,24 @@ def add_location():
 def view_locations(): 
     """View current locations."""
 
-@app.route('/add-item')
-def add_item(): 
+@app.route('/request-item', methods=["POST"])
+def request_item(): 
     """Add item to location."""
+
+    user = crud.get_user_by_email(session["username"])
+    org = crud.get_org_by_user(user)
+
+    item_name = request.form.get('item_name')
+    condition_accepted = request.form.get('condition')
+    qty_needed = int(5)
+    location = request.form.get('location')
+
+    # location = crud.get_location_by_id(location_id)
+
+    crud.create_item(item_name, condition_accepted, location, 5)
+
+    flash("Item added successfully.")
+    return redirect('/account')
 
 @app.route('/view-items')
 def view_items(): 

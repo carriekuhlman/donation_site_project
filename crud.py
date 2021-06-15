@@ -110,6 +110,11 @@ def get_org_by_user(user):
 
     return Org.query.filter(Org.user_id == user.user_id).first()
 
+def view_all_org_locations(org): 
+    """Show all locations for an org"""
+
+    return Location.query.filter(Location.org_id == org.org_id).all()
+
 def get_location_by_id(location_id):
     """Get org by org ID."""
 
