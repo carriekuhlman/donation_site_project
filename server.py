@@ -247,6 +247,19 @@ def user_logout():
 
     return redirect('/')
 
+# @app.route("/test.json")
+# def testing_ajax():
+#     """Testing search functionality all on one page."""
+
+#     searched_item = request.args.get('item')
+#     items = crud.search_items(searched_item)
+
+#     return render_template('search_results.html', items=items)
+
+#     zipcode = request.args.get('zipcode')
+#     weather_info = WEATHER.get(zipcode, DEFAULT_WEATHER)
+#     return jsonify(weather_info)
+
 
 
 if __name__ == "__main__": 
