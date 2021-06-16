@@ -142,8 +142,29 @@ def register_org():
     else:
         new_user = crud.create_user(email, password)
         crud.create_org(org_name, new_user, org_description, org_website)
-        flash("Organization account created! Please log in.")
 
+    phone = request.form.get('phone')
+    address = request.form.get('address')
+    city = request.form.get('city')
+    state = request.form.get('state')
+    zip_code = request.form.get('zip_code')
+    in_person = request.form.get('in_person')
+
+    org = crud.get_org_by_user(new_user)
+
+    if in_person == "True": 
+        in_person = True
+        donation_hours = request.form.get('donation_hours')
+
+    else:
+        in_person = False
+        donation_hours = None
+
+    crud.create_location(phone, address, city, state, zip_code,
+                    in_person, org, donation_hours)
+        
+        
+    flash("Organization account created! Please log in.")
     return redirect('/')
 
 @app.route('/org/<org_id>')
