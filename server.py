@@ -75,7 +75,7 @@ def verify_user():
             verify = crud.verify_credentials(user, password)
             session['username'] = request.form['email']
             if verify:
-                user_type = crud.org_or_donor(user)
+                user_type = crud.check_if_donor(user)
                 if user_type: 
                     return render_template('donor_home.html')
                 else: 
@@ -251,7 +251,7 @@ def user_logout():
 # def testing_ajax():
 #     """Testing search functionality all on one page."""
 
-#     searched_item = request.args.get('item')
+#     searched_item = request.args.get('searched-item')
 #     items = crud.search_items(searched_item)
 
 #     return render_template('search_results.html', items=items)

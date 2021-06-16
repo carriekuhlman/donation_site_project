@@ -93,8 +93,8 @@ def verify_credentials(user, password):
 
     return User.query.filter(user.password == password).first()
 
-def org_or_donor(user):
-    """Check to see if org or donor."""
+def check_if_donor(user):
+    """Check to see if user is donor."""
 
     #returns a donor object if user_id is in donor table
 
