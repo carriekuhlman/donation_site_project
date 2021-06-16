@@ -1,7 +1,7 @@
 """Server for donations site."""
 
 from flask import (Flask, render_template, request, flash,
-                session, redirect)
+                session, redirect, jsonify)
 from model import connect_to_db
 import crud
 
