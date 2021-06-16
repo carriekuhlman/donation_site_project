@@ -61,21 +61,21 @@
         <p>
             Condition Accepted:
             <select name="condition">
-                <option value="new">New</option>
-                <option value="lightly_used">Lightly Used</option>
-                <option value="for_scraps">For Scraps</option>
+                <option value="New">New</option>
+                <option value="Lightly Used">Lightly Used</option>
+                <option value="For Scraps">For Scraps</option>
             </select>
         </p>
 
         <p>
-            Quantity Needed <input type="text" name="qty_needed">
+            Quantity Needed (1 or More) <input type="text" name="qty_needed" value=1>
         </p>
 
         <p>
             Location:
             <select name="location">
                 {% for location in locations %}
-                    <option value="{{ location }}">{{ location.location_id }}</option>
+                    <option value="{{ location.location_id }}">{{ location.street_address }}</option>
                 {% endfor %}
               </select>
         </p>

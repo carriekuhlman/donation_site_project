@@ -203,12 +203,12 @@ def request_item():
 
     item_name = request.form.get('item_name')
     condition_accepted = request.form.get('condition')
-    qty_needed = int(5)
-    location = request.form.get('location')
+    qty_needed = int(request.form.get('qty_needed'))
+    location_id = int(request.form.get('location'))
 
-    # location = crud.get_location_by_id(location_id)
+    location = crud.get_location_by_id(location_id)
 
-    crud.create_item(item_name, condition_accepted, location, 5)
+    crud.create_item(item_name, condition_accepted, location, qty_needed)
 
     flash("Item added successfully.")
     return redirect('/account')
