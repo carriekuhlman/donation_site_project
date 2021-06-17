@@ -119,6 +119,15 @@ def get_location_by_id(location_id):
     """Get org by org ID."""
 
     return Location.query.get(location_id)
+
+def view_all_org_items(org):
+    """Get items by org ID."""
+
+    org_locations = Location.query.filter(Location.org_id == org.org_id).all()
+    org_items = []
+    for location in org_locations: 
+        org_items.extend(Item.query.filter(Item.location_id == location.location_id).all())
+    return org_items
     
 
 if __name__ == "__main__": 

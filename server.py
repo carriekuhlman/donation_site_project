@@ -238,6 +238,13 @@ def request_item():
 def view_items(): 
     """View current items."""
 
+    user = crud.get_user_by_email(session["username"])
+    org = crud.get_org_by_user(user)
+
+    items = crud.view_all_org_items(org)
+
+    return render_template('search_results.html', items=items)
+
 @app.route('/logout')
 def user_logout(): 
     """Remove the user from the session"""
