@@ -260,7 +260,13 @@ def testing_ajax():
 
     searched_item = request.args.get("searched-item")
     items = crud.search_items(searched_item)
-    return jsonify(items)
+    
+    if items: 
+        return jsonify({"status": "success",
+                        "item_name": searched_item,
+                        "item_id": 2, 
+                        "qty" : 10})
+
 
 @app.route("/testing")
 def testing_only():

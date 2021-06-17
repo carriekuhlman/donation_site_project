@@ -2,8 +2,11 @@
 
 // Show item search results
 
-function displayItems(results) {
-  $("#searched-item-info").html(results);
+function displayItems(res) {
+  // $("#searched-item-info").html(results);
+  $("#item-name").text("This");
+  $("#item-id").text("Is");
+  $("#item-qty").text("Working");
 }
 
 function showItems(evt) {
