@@ -93,7 +93,7 @@ def verify_user():
 
     elif "username" in session and request.method == "GET": 
         user = crud.get_user_by_email(session["username"])
-        user_type = crud.org_or_donor(user)
+        user_type = crud.check_if_donor(user)
         if user_type: 
             return render_template('donor_home.html')
         else: 
@@ -254,18 +254,19 @@ def user_logout():
 
     return redirect('/')
 
-# @app.route("/test.json")
-# def testing_ajax():
-#     """Testing search functionality all on one page."""
+@app.route("/test.json")
+def testing_ajax():
+    """Testing search functionality all on one page."""
 
-#     searched_item = request.args.get('searched-item')
-#     items = crud.search_items(searched_item)
+    searched_item = request.args.get("searched-item")
+    items = crud.search_items(searched_item)
+    return jsonify(items)
 
-#     return render_template('search_results.html', items=items)
+@app.route("/testing")
+def testing_only():
+    """Testing search functionality all on one page."""
 
-#     zipcode = request.args.get('zipcode')
-#     weather_info = WEATHER.get(zipcode, DEFAULT_WEATHER)
-#     return jsonify(weather_info)
+    return render_template("TESTING.html")
 
 
 
