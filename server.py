@@ -243,7 +243,7 @@ def view_items():
 
     items = crud.view_all_org_items(org)
 
-    return render_template('search_results.html', items=items)
+    return render_template('org_item_list.html', items=items)
 
 @app.route('/logout')
 def user_logout(): 
