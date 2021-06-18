@@ -1,5 +1,23 @@
 "use strict";
 
+// Change create account options depending on radio
+// button selection
+
+
+$(document).ready(function(){
+  
+  $('input[type=radio][name=acct_type]').change(function() {
+      if (this.value == "donor_acct") {
+        $('.donor-details').show();  
+        $('.org-details').hide();
+      }else if (this.value == "org_acct") {
+        $('.org-details').show();  
+        $('.donor-details').hide();
+      }
+  });
+
+});
+
 // Show item search results
 
 function displayItems(res) {
@@ -20,3 +38,4 @@ function showItems(evt) {
 }
 
   $("#search-form").on('submit', showItems);
+

@@ -31,11 +31,36 @@
         <input type="radio" name="acct_type" value="org_acct">
         <label>Organization Account (We need donations!)</label>
       </p>
-    </div>
 
-    <div class="donor-details">
-      <p>First Name <input type="text" name="fname"></p>
-      <p>Last Name <input type="text" name="lname"></p>
+      <div class="donor-details">
+        <p>First Name <input type="text" name="fname"></p>
+        <p>Last Name <input type="text" name="lname"></p>
+      </div>
+
+      <div class="org-details" style="display:none">
+        <p>Organization Name <input type="text" name="org_name"></p>
+        <p>Organization Description <input type="text" name="org_description"></p>
+        <p>Organization Website <input type="text" name="org_website"></p>
+        <p>Phone <input type="text" name="phone"></p>
+        <p>Address <input type="text" name="address"></p>
+        <p>City <input type="text" name="city"></p>
+        <p>State <input type="text" name="state"></p>
+        <p>Zip Code <input type="text" name="zip_code"></p>
+        <p>
+          Are in person donations accepted? 
+          <input type="radio" name="in_person" value="True">
+          <label>Yes</label>
+    
+          <input type="radio" name="in_person" value="False" checked>
+          <label>No</label>
+        </p>
+        <p>
+          If in person donations are accepted, what are the hours? 
+          <input type="text" name="donation_hours">
+        </p>
+      </div>
+
+      <p><input type="submit"></p>
     </div>
   </form>
 
