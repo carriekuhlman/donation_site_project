@@ -105,66 +105,56 @@ def verify_user():
         flash("Please log in.")
         return redirect('/')
 
-@app.route('/donor', methods=['POST'])
-def register_donor():
-    """Create a new donor."""
+@app.route('/create-account', methods=['POST'])
+def create_account():
+    """Create a new account"""
 
     email = request.form.get('email')
     password = request.form.get('password')
-    fname = request.form.get('fname')
-    lname = request.form.get('lname')
+    account_type = request.form.get('acct_type')
 
     user = crud.get_user_by_email(email)
 
     if user:
         flash("A user with that email address already exists.")
-    else:
+
+    elif account_type == "donor_acct":
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
         new_user = crud.create_user(email, password)
         crud.create_donor(fname, lname, new_user)
         flash("Donor account created! Please log in.")
 
-    return redirect('/')
+    elif account_type == "org_acct":
+        org_name = request.form.get('org_name')
+        org_description = request.form.get('org_description')
+        org_website = request.form.get('org_website')
 
-@app.route('/org', methods=['POST'])
-def register_org():
-    """Create a new org."""
-
-    email = request.form.get('email')
-    password = request.form.get('password')
-    org_name = request.form.get('org_name')
-    org_description = request.form.get('org_description')
-    org_website = request.form.get('org_website')
-
-    user = crud.get_user_by_email(email)
-
-    if user:
-        flash("A user with that email address already exists.")
-    else:
         new_user = crud.create_user(email, password)
         crud.create_org(org_name, new_user, org_description, org_website)
 
-    phone = request.form.get('phone')
-    address = request.form.get('address')
-    city = request.form.get('city')
-    state = request.form.get('state')
-    zip_code = request.form.get('zip_code')
-    in_person = request.form.get('in_person')
+        phone = request.form.get('phone')
+        address = request.form.get('address')
+        city = request.form.get('city')
+        state = request.form.get('state')
+        zip_code = request.form.get('zip_code')
+        in_person = request.form.get('in_person')
 
-    org = crud.get_org_by_user(new_user)
+        org = crud.get_org_by_user(new_user)
 
-    if in_person == "True": 
-        in_person = True
-        donation_hours = request.form.get('donation_hours')
+        if in_person == "True": 
+            in_person = True
+            donation_hours = request.form.get('donation_hours')
 
-    else:
-        in_person = False
-        donation_hours = None
+        else:
+            in_person = False
+            donation_hours = None
 
-    crud.create_location(phone, address, city, state, zip_code,
-                    in_person, org, donation_hours)
+        crud.create_location(phone, address, city, state, zip_code,
+                        in_person, org, donation_hours)
         
-        
-    flash("Organization account created! Please log in.")
+        flash("Organization account created! Please log in.")
+
     return redirect('/')
 
 @app.route('/org/<org_id>')
@@ -273,6 +263,70 @@ def testing_only():
     """Testing search functionality all on one page."""
 
     return render_template("TESTING.html")
+
+### OLD ROUTES ###    
+
+# @app.route('/donor', methods=['POST'])
+# def register_donor():
+#     """Create a new donor."""
+
+#     email = request.form.get('email')
+#     password = request.form.get('password')
+#     fname = request.form.get('fname')
+#     lname = request.form.get('lname')
+
+#     user = crud.get_user_by_email(email)
+
+#     if user:
+#         flash("A user with that email address already exists.")
+#     else:
+#         new_user = crud.create_user(email, password)
+#         crud.create_donor(fname, lname, new_user)
+#         flash("Donor account created! Please log in.")
+
+#     return redirect('/')
+
+# @app.route('/org', methods=['POST'])
+# def register_org():
+#     """Create a new org."""
+
+#     email = request.form.get('email')
+#     password = request.form.get('password')
+#     org_name = request.form.get('org_name')
+#     org_description = request.form.get('org_description')
+#     org_website = request.form.get('org_website')
+
+#     user = crud.get_user_by_email(email)
+
+#     if user:
+#         flash("A user with that email address already exists.")
+#     else:
+#         new_user = crud.create_user(email, password)
+#         crud.create_org(org_name, new_user, org_description, org_website)
+
+#     phone = request.form.get('phone')
+#     address = request.form.get('address')
+#     city = request.form.get('city')
+#     state = request.form.get('state')
+#     zip_code = request.form.get('zip_code')
+#     in_person = request.form.get('in_person')
+
+#     org = crud.get_org_by_user(new_user)
+
+#     if in_person == "True": 
+#         in_person = True
+#         donation_hours = request.form.get('donation_hours')
+
+#     else:
+#         in_person = False
+#         donation_hours = None
+
+#     crud.create_location(phone, address, city, state, zip_code,
+#                     in_person, org, donation_hours)
+        
+        
+#     flash("Organization account created! Please log in.")
+#     return redirect('/')
 
 
 

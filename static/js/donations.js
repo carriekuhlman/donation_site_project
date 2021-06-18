@@ -3,7 +3,6 @@
 // Change create account options depending on radio
 // button selection
 
-
 $(document).ready(function(){
   
   $('input[type=radio][name=acct_type]').change(function() {
