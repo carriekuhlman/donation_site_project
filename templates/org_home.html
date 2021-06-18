@@ -2,85 +2,85 @@
 {% block title %}Organization Home{% endblock %} 
 
 {% block body %} 
-    <h1>Welcome Organization!</h1>
+  <h1>Welcome Organization!</h1>
 
-    <h2>Navigation</h2>
-    <ul>
-        <li>View current locations. <a href="/locations">View locations</a></li>
-        <li>Show currently listed items. <a href="/view-items">Show items</a></li>
-    </ul>
+  <h2>Navigation</h2>
+  <ul>
+    <li>View current locations. <a href="/locations">View locations</a></li>
+    <li>Show currently listed items. <a href="/view-items">Show items</a></li>
+  </ul>
 
-    <h2>Add Location</h2>
-    <form action="/add-location" method="POST">
-        <p>
-            Phone <input type="text" name="phone">
-        </p>
+  <h2>Add Location</h2>
+  <form action="/add-location" method="POST">
+    <p>
+      Phone <input type="text" name="phone">
+    </p>
 
-        <p>
-            Address <input type="text" name="address">
-        </p>
+    <p>
+      Address <input type="text" name="address">
+    </p>
 
-        <p>
-            City <input type="text" name="city">
-        </p>
+    <p>
+      City <input type="text" name="city">
+    </p>
 
-        <p>
-            State <input type="text" name="state">
-        </p>
+    <p>
+      State <input type="text" name="state">
+    </p>
 
-        <p>
-            Zip Code <input type="text" name="zip_code">
-        </p>
+    <p>
+      Zip Code <input type="text" name="zip_code">
+    </p>
 
-        <p>
-            Are in person donations accepted? 
-            <input type="radio" name="in_person" value="True">
-            <label>Yes</label>
+    <p>
+      Are in person donations accepted? 
+      <input type="radio" name="in_person" value="True">
+      <label>Yes</label>
 
-            <input type="radio" name="in_person" value="False" checked>
-            <label>No</label>
-        </p>
+      <input type="radio" name="in_person" value="False" checked>
+      <label>No</label>
+    </p>
 
-        <p>
-            If in person donations are accepted, what are the hours? 
-            <input type="text" name="donation_hours">
-        </p>
+    <p>
+      If in person donations are accepted, what are the hours? 
+      <input type="text" name="donation_hours">
+    </p>
 
-        <p>
-            <input type="submit">
-        </p>
-    </form>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
 
-    <h2>Request Item</h2>
-    <form action="/request-item" method="POST">
-        <p>
-            Item Name/Description <input type="text" name="item_name">
-        </p>
+  <h2>Request Item</h2>
+  <form action="/request-item" method="POST">
+    <p>
+      Item Name/Description <input type="text" name="item_name">
+    </p>
 
-        <p>
-            Condition Accepted:
-            <select name="condition">
-                <option value="New">New</option>
-                <option value="Lightly Used">Lightly Used</option>
-                <option value="For Scraps">For Scraps</option>
-            </select>
-        </p>
+    <p>
+      Condition Accepted:
+      <select name="condition">
+        <option value="New">New</option>
+        <option value="Lightly Used">Lightly Used</option>
+        <option value="For Scraps">For Scraps</option>
+      </select>
+    </p>
 
-        <p>
-            Quantity Needed (1 or More) <input type="text" name="qty_needed" value=1>
-        </p>
+    <p>
+      Quantity Needed (1 or More) <input type="text" name="qty_needed" value=1>
+    </p>
 
-        <p>
-            Location:
-            <select name="location">
-                {% for location in locations %}
-                    <option value="{{ location.location_id }}">{{ location.street_address }}</option>
-                {% endfor %}
-              </select>
-        </p>
+    <p>
+      Location:
+      <select name="location">
+        {% for location in locations %}
+          <option value="{{ location.location_id }}">{{ location.street_address }}</option>
+        {% endfor %}
+      </select>
+    </p>
 
-        <p>
-            <input type="submit">
-        </p>
-    </form>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
 {% endblock %}

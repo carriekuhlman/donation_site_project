@@ -7,7 +7,6 @@
   <table>
     <tr>
       <th>Item Name</th>
-      <th>Item Organization</th>
       <th>Item Location</th>
       <th>Qty Needed</th>
       <th>Condition Accepted</th>
@@ -16,14 +15,9 @@
       <tr>
         <td>{{ item.item_name }}</td>
         <td>
-          <a href='/org/{{ item.location.org.org_id }}'>
-          {{ item.location.org.org_name }}
+          <a href='/location/{{ item.location.location_id }}'>
+          {{ item.location.street_address }}
           </a>
-        </td>
-        <td>
-            <a href='/location/{{ item.location.location_id }}'>
-            {{ item.location.street_address }}
-            </a>
         </td>
         <td>{{ item.qty_needed }}</td>
         <td>{{ item.condition_accepted }}</td>
