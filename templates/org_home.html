@@ -1,86 +1,67 @@
 {% extends 'base.html' %} 
 {% block title %}Organization Home{% endblock %} 
 
-{% block body %} 
-  <h1>Welcome Organization!</h1>
+{% block body %}
+  <div class="row align-items-center text-center" id="account_home">
+    <section class="col-6 mx-auto">
+      <h2>Welcome Organization!</h2>
+      <ul style="list-style-type:none;">
+        <li>View <a href="/locations">current locations</a></li>
+        <li>View <a href="/view-items">needed items</a></li>
+      </ul>
+    </section>
+  </div>
 
-  <h2>Navigation</h2>
-  <ul>
-    <li>View current locations. <a href="/locations">View locations</a></li>
-    <li>Show currently listed items. <a href="/view-items">Show items</a></li>
-  </ul>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Add Location</h4>
+      <form action="/add-location" method="POST">
+        <p>Phone <input type="text" name="phone"></p>
+        <p>Address <input type="text" name="address"></p>
+        <p>City <input type="text" name="city"></p>
+        <p>State <input type="text" name="state"></p>
+        <p>Zip Code <input type="text" name="zip_code"></p>
+        <p>
+          Are in person donations accepted? 
+          <input type="radio" name="in_person" value="True">
+          <label>Yes</label>
 
-  <h2>Add Location</h2>
-  <form action="/add-location" method="POST">
-    <p>
-      Phone <input type="text" name="phone">
-    </p>
+          <input type="radio" name="in_person" value="False" checked>
+          <label>No</label>
+        </p>
+        <p>
+          If in person donations are accepted, what are the hours? 
+          <input type="text" name="donation_hours">
+        </p>
+        <button type="submit" class="btn btn-primary">Add Location</button>
+      </form>
+    </div>
 
-    <p>
-      Address <input type="text" name="address">
-    </p>
-
-    <p>
-      City <input type="text" name="city">
-    </p>
-
-    <p>
-      State <input type="text" name="state">
-    </p>
-
-    <p>
-      Zip Code <input type="text" name="zip_code">
-    </p>
-
-    <p>
-      Are in person donations accepted? 
-      <input type="radio" name="in_person" value="True">
-      <label>Yes</label>
-
-      <input type="radio" name="in_person" value="False" checked>
-      <label>No</label>
-    </p>
-
-    <p>
-      If in person donations are accepted, what are the hours? 
-      <input type="text" name="donation_hours">
-    </p>
-
-    <p>
-      <input type="submit">
-    </p>
-  </form>
-
-  <h2>Request Item</h2>
-  <form action="/request-item" method="POST">
-    <p>
-      Item Name/Description <input type="text" name="item_name">
-    </p>
-
-    <p>
-      Condition Accepted:
-      <select name="condition">
-        <option value="New">New</option>
-        <option value="Lightly Used">Lightly Used</option>
-        <option value="For Scraps">For Scraps</option>
-      </select>
-    </p>
-
-    <p>
-      Quantity Needed (1 or More) <input type="text" name="qty_needed" value=1>
-    </p>
-
-    <p>
-      Location:
-      <select name="location">
-        {% for location in locations %}
-          <option value="{{ location.location_id }}">{{ location.street_address }}</option>
-        {% endfor %}
-      </select>
-    </p>
-
-    <p>
-      <input type="submit">
-    </p>
-  </form>
+    <div class="col-md-6">
+      <h4>Request Item</h4>
+      <form action="/request-item" method="POST">
+        <p>Item Name/Description <input type="text" name="item_name"></p>
+        <p>
+          Condition Accepted:
+          <select name="condition">
+            <option value="New">New</option>
+            <option value="Lightly Used">Lightly Used</option>
+            <option value="For Scraps">For Scraps</option>
+          </select>
+        </p>
+        <p>
+          Quantity Needed (1 or More) <input type="text" name="qty_needed" value=1>
+        </p>
+        <p>
+          Location:
+          <select name="location">
+            {% for location in locations %}
+              <option value="{{ location.location_id }}">{{ location.street_address }}</option>
+            {% endfor %}
+          </select>
+        </p>
+        <button type="submit" class="btn btn-primary">Add Item</button>
+      </form>
+    </div>
+  </div>  
 {% endblock %}

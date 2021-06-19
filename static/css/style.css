@@ -4,6 +4,19 @@
 	padding: 20px;
 }
 
+html body {
+	background-color: rgb(159,224,237);
+}
+
+#homepage {
+	padding: 0px;
+	background-image: url("/static/img/donations-bg-blue.jpg");
+	background-color: rgb(159,224,237);
+  	background-position: center; /* Center the image */
+  	background-repeat: no-repeat; /* Do not repeat the image */
+  	background-size: cover;
+}
+
 td
 {
     padding:0 15px;
