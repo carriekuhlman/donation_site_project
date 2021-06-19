@@ -40,38 +40,14 @@
             <!-- Login Button HTML -->
             <a class="nav-link" href="#loginModal" class="trigger-btn" 
               data-toggle="modal">Login</a>
-            <!-- Login Modal HTML -->
-            <div id="loginModal" class="modal fade" aria-hidden="true" style="display: none;">
-              <div class="modal-dialog modal-login">
-                <div class="modal-content">
-                  <div class="modal-header">				
-                    <h4 class="modal-title">Member Login</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="/account" method="POST">
-                      <div class="form-group">
-                        <i class="fa fa-user"></i>
-                        <input type="text" class="form-control" name="email" placeholder="Username" required="required">
-                      </div>
-                      <div class="form-group">
-                        <i class="fa fa-lock"></i>
-                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">					
-                      </div>
-                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="/account">Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/items">Search Items</a>
+            <!-- Search Items Button HTML -->
+            <a class="nav-link" href="#searchModal" class="trigger-btn" 
+              data-toggle="modal">Search Items</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -81,6 +57,59 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Nav Modals -->
+
+    <!-- Login Modal HTML -->
+    <div id="loginModal" class="modal fade" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <div class="modal-header">				
+            <h4 class="modal-title">User Login</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body">
+            <form action="/account" method="POST">
+              <div class="form-group">
+                <input type="text" class="form-control" name="email" placeholder="Username" required="required">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">					
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="#/create-account">Create Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Modal HTML -->
+    <div id="searchModal" class="modal fade" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <div class="modal-header">				
+            <h4 class="modal-title">Search Items</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body">
+            <form action="/search-results">
+              <div class="form-group">
+                <input type="text" class="form-control" name="item" placeholder="Item Name" required="required">
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Items">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
     
     <div class="container-fluid">
       {% for msg in get_flashed_messages() %} 
