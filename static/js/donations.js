@@ -17,6 +17,20 @@ $(document).ready(function(){
 
 });
 
+// Show donation hours option if selected
+
+$(document).ready(function(){
+  
+  $('input[type=radio][name=in_person]').change(function() {
+      if (this.value == "True") {
+        $('.location-donation-hours').show();  
+      }else if (this.value == "False") {
+        $('.location-donation-hours').hide(); 
+      }
+  });
+
+});
+
 // Dismissing popovers
 
 $('.popover-dismiss').popover({
