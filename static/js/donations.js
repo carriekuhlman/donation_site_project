@@ -17,6 +17,19 @@ $(document).ready(function(){
 
 });
 
+// Dismissing popovers
+
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
+
+// Modals
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+
 // Show item search results
 
 function displayItems(res) {

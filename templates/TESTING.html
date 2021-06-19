@@ -32,3 +32,44 @@
 </section>
 
 {% endblock %}
+
+
+OLD SEARCH RESULTS!
+
+{% extends 'base.html' %} 
+{% block title %}Search Results{% endblock %} 
+
+{% block body %} 
+  <h1>Search Results</h1>
+
+  <table>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Organization</th>
+      <th>Item Location</th>
+      <th>Qty Needed</th>
+      <th>Condition Accepted</th>
+    </tr>
+    {% for item in items %} 
+      <tr>
+        <td>{{ item.item_name }}</td>
+        <td>
+          <a href='/org/{{ item.location.org.org_id }}'
+            data-toggle="popover" 
+            data-trigger="focus"
+            title="{{ item.location.org.org_description }}"
+            data-content="This is working">
+          {{ item.location.org.org_name }}
+          </a>
+        </td>
+        <td>
+          <a href='/location/{{ item.location.location_id }}'>
+          {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
+          </a>
+        </td>
+        <td>{{ item.qty_needed }}</td>
+        <td>{{ item.condition_accepted }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %} 
