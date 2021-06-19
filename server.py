@@ -239,8 +239,9 @@ def view_items():
 def user_logout(): 
     """Remove the user from the session"""
 
-    session.pop('username', None)
-    flash("Successfully logged out.")
+    if "username" in session:
+        session.pop('username', None)
+        flash("Successfully logged out.")
 
     return redirect('/')
 
