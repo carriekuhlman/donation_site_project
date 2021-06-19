@@ -21,7 +21,7 @@ html body {
   	background-size: cover;
 }
 
-td
+/* td
 {
     padding:0 15px;
 }
@@ -29,7 +29,8 @@ td
 th
 {
     padding:0 15px;
-}
+} */
+
 
 .hidden {
 	display:none;
@@ -41,7 +42,7 @@ th
 	border-radius: 0px;
 }
 
-#ubermelon-logo, #ubermelon-logo:hover, .navbar-dark .navbar-brand {
+.navbar-dark .navbar-brand {
 	color: white;
 }
 
