@@ -105,6 +105,12 @@ def verify_user():
         flash("Please log in.")
         return redirect('/')
 
+@app.route('/account-details')
+def account_details():
+    """Get account details"""
+
+    return render_template("create_account.html")
+
 @app.route('/create-account', methods=['POST'])
 def create_account():
     """Create a new account"""

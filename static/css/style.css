@@ -5,6 +5,11 @@
 }
 
 html body {
+	background: url("/static/img/donations-bg-blue.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
 	background-color: rgb(230, 204, 167);
 }
 
@@ -14,11 +19,6 @@ html body {
 	padding-top: 100px;
 	padding-bottom: 100px;
 	margin-bottom: 20px;
-	background-image: url("/static/img/donations-bg-blue.jpg");
-	background-color: rgb(159,224,237);
-  	background-position: center; /* Center the image */
-  	background-repeat: no-repeat; /* Do not repeat the image */
-  	background-size: cover;
 }
 
 /* td
