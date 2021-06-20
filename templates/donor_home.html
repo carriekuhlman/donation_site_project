@@ -2,11 +2,22 @@
 {% block title %}Donor Home{% endblock %} 
 
 {% block body %} 
-  <h1>Welcome Donor!</h1>
+  <div class="row align-items-center text-center" id="account_home">
+    <section class="col-6 mx-auto">
+      <h2>Welcome Donor!</h2>
+    </div>
 
-  <h2>Search Needed Items</h2>
-  <form action="/search-results">
-    <p>Item <input type="text" name="item"></p>
-    <button type="submit" class="btn btn-primary">Add Location</button>
-  </form>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Search Needed Items</h3>
+      <form action="/search-results">
+        <div class="form-group">
+          <label for="FormControlSearchItems">Enter Item</label>
+          <input type="text" class="form-control" 
+            id="FormControlSearchItems" name="item">
+        </div>
+        <button type="submit" class="btn btn-primary">Search Items</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}
