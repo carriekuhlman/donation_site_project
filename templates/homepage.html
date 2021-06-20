@@ -20,11 +20,15 @@
       <form action="/account", method="POST">
         <div class="form-group">
           <label for="FormControlEmail1">Email Address</label>
-          <input type="email" class="form-control" id="FormControlEmail1" name = "email" placeholder="name@example.com">
+          <input type="email" class="form-control" 
+            id="FormControlEmail1" name="email" 
+            placeholder="name@example.com">
         </div>
         <div class="form-group">
           <label for="FormControlPassword1">Password</label>
-          <input type="password" class="form-control" id="FormControlPassowrd1" name = "password" placeholder="Enter Password">
+          <input type="password" class="form-control" 
+            id="FormControlPassowrd1" name="password" 
+            placeholder="Enter Password">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
@@ -34,7 +38,36 @@
       <h3>Create Account</h3>
       <form action="/create-account" method="POST">
         <div class="user-setup">
-          <p>Email Address <input type="email" name="email"></p>
+          <div class="form-group">
+            <label for="FormControlEmail2">Email Address</label>
+            <input type="email" class="form-control" 
+              id="FormControlEmail2" name="email" 
+              placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="FormControlPassword2">Password</label>
+            <input type="password" class="form-control" 
+              id="FormControlPassword2" name="password" 
+              placeholder="Create Password">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" 
+              id="FormControlRadio1" name="acct_type"
+              value="donor_acct" checked>
+            <label class="form-check-label" for="FormControlRadio1">
+              Donor Account (I have stuff to donate!)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" 
+              id="FormControlRadio2" name="acct_type"
+              value="org_acct">
+            <label class="form-check-label" for="FormControlRadio2">
+              Organization Account (We need donations!)
+            </label>
+          </div>
+
+          <!-- <p>Email Address <input type="email" name="email"></p>
           <p>Password <input type="password" name="password"></p>
           <p>Account Type</br>
             <input type="radio" name="acct_type" value="donor_acct" checked>
@@ -42,37 +75,123 @@
 
             <input type="radio" name="acct_type" value="org_acct">
             <label>Organization Account (We need donations!)</label>
-          </p>
+          </p> -->
 
           <div class="donor-details">
-            <p>First Name <input type="text" name="fname"></p>
-            <p>Last Name <input type="text" name="lname"></p>
+            <div class="form-group">
+              <label for="FormControlFname">First Name</label>
+              <input type="text" class="form-control" 
+                id="FormControlFname" name="fname">
+            </div>
+            <div class="form-group">
+              <label for="FormControlLname">Last Name</label>
+              <input type="text" class="form-control" 
+                id="FormControlLname" name="lname">
+            </div>
           </div>
 
+
+<!-- 
+            <p>First Name <input type="text" name="fname"></p>
+            <p>Last Name <input type="text" name="lname"></p>
+          </div> -->
+
           <div class="org-details" style="display:none">
-            <p>Organization Name <input type="text" name="org_name"></p>
-            <p>Organization Description <input type="text" name="org_description"></p>
-            <p>Organization Website <input type="text" name="org_website"></p>
-            <p>Add details for a first location. Don't worry, additional locations can be added later.</p>
-            <p>Phone <input type="text" name="phone"></p>
-            <p>Address <input type="text" name="address"></p>
-            <p>City <input type="text" name="city"></p>
-            <p>State <input type="text" name="state"></p>
-            <p>Zip Code <input type="text" name="zip_code"></p>
+            <div class="form-group">
+              <label for="FormControlOrgName">Organization Name</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgName" name="org_name">
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgDescription">Organization Description</label>
+              <textarea class="form-control" id="FormControlOrgDescription" 
+                rows="4" name="org_description">
+              </textarea>
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgWebsite">Organization Website</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgWebsite" name="org_website">
+            </div>
+            <p>Add details for a first location. 
+              Don't worry, additional locations can be added later.
+            </p>
+            <div class="form-group">
+              <label for="FormControlOrgPhone">Phone</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgPhone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgAddress">Street Address</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgAddress" name="address">
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgCity">City</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgCity" name="city">
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgState">State</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgState" name="state">
+            </div>
+            <div class="form-group">
+              <label for="FormControlOrgZip">Zip Code</label>
+              <input type="text" class="form-control" 
+                id="FormControlOrgZip" name="zip_code">
+            </div>
             <p>
+              Are in person donations accepted? 
+            </p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" 
+                id="FormControlRadio3" name="in_person"
+                value="True">
+              <label class="form-check-label" for="FormControlRadio3">
+                Yes
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" 
+                id="FormControlRadio4" name="in_person"
+                value="False" checked>
+              <label class="form-check-label" for="FormControlRadio4">
+                No
+              </label>
+            </div>
+
+
+            <!-- <p>Organization Name <input type="text" name="org_name"></p> -->
+            <!-- <p>Organization Description <input type="text" name="org_description"></p> -->
+            <!-- <p>Organization Website <input type="text" name="org_website"></p> -->
+            <!-- <p>Add details for a first location. Don't worry, additional locations can be added later.</p> -->
+            <!-- <p>Phone <input type="text" name="phone"></p> -->
+            <!-- <p>Address <input type="text" name="address"></p> -->
+            <!-- <p>City <input type="text" name="city"></p> -->
+            <!-- <p>State <input type="text" name="state"></p> -->
+            <!-- <p>Zip Code <input type="text" name="zip_code"></p> -->
+            <!-- <p>
               Are in person donations accepted? 
               <input type="radio" name="in_person" value="True">
               <label>Yes</label>
         
               <input type="radio" name="in_person" value="False" checked>
               <label>No</label>
-            </p>
+            </p> -->
             <div class="location-donation-hours" style="display:none">
-              When are the donation hours? 
-              <input type="text" name="donation_hours">
+              <div class="form-group">
+                <label for="FormControlDonationHours">When are the donation hours?</label>
+                <input type="text" class="form-control" 
+                  id="FormControlDonationHours" name="donation_hours">
+              </div>
             </div>
+
+
+              <!-- When are the donation hours? 
+              <input type="text" name="donation_hours"> -->
           </div>
-          <p><button type="submit" class="btn btn-primary">Create Account</button></p>
+          <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </form>
     </div>
@@ -80,8 +199,13 @@
     <div class="col-md-4">
       <h3>Search Items</h3>
       <form action="/search-results">
-        <p>Item <input type="text" name="item"></p>
-        <p><button type="submit" class="btn btn-primary">Search Items</button></p>
+        <div class="form-group">
+          <label for="FormControlSearchItems">Enter Item</label>
+          <input type="text" class="form-control" 
+            id="FormControlSearchItems" name="item">
+        </div>
+        <!-- <p>Item <input type="text" name="item"></p> -->
+        <button type="submit" class="btn btn-primary">Search Items</button>
       </form>
     </div> 
   </div>
