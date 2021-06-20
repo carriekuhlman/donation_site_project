@@ -1,58 +1,65 @@
 {% extends 'base.html' %} 
-{% block title %}Search Results{% endblock %} 
+{% block title %}Current Listed Items{% endblock %} 
 
 {% block body %} 
-  <h1>Search Results</h1>
+  <h2>Current Listed Items</h1>
 
-  <table>
-    <tr>
-      <th>Item Name</th>
-      <th>Item Location</th>
-      <th>Qty Needed</th>
-      <th>Condition Accepted</th>
-    </tr>
-    {% for item in items %} 
-      <tr>
-        <td>{{ item.item_name }}</td>
-        <td>
-                    <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#org-location{{ item }}">
-            {{ item.location.street_address }}
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="org-location{{ item }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" id="org-location{{ item }}" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{ item.location.street_address }}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>
-                    {{ item.location.street_address }}<br />
-                    {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
-                  </p>
-                  <p>
-                    {% if item.location.accept_in_person %}
-                      In-Person Donation Hours: {{ item.location.donation_hours }}<br />
-                    {% else %} 
-                      In-Person Donations Not Accepted<br />
-                    {% endif %}
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Item Name</th>
+          <th>Item Location</th>
+          <th>Qty Needed</th>
+          <th>Condition Accepted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %} 
+          <tr>
+            <th scope="row">{{ item.item_name }}</th>
+            <td>
+                        <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#org-location{{ item }}">
+                {{ item.location.street_address }}
+              </button>
+    
+              <!-- Modal -->
+              <div class="modal fade" id="org-location{{ item }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" id="org-location{{ item }}" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">{{ item.location.street_address }}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>
+                        {{ item.location.street_address }}<br />
+                        {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
+                      </p>
+                      <p>
+                        {% if item.location.accept_in_person %}
+                          In-Person Donation Hours: {{ item.location.donation_hours }}<br />
+                        {% else %} 
+                          In-Person Donations Not Accepted<br />
+                        {% endif %}
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </td>
-        <td>{{ item.qty_needed }}</td>
-        <td>{{ item.condition_accepted }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+            </td>
+            <td>{{ item.qty_needed }}</td>
+            <td>{{ item.condition_accepted }}</td>
+          </tr>
+        {% endfor %}
+      </tbody> 
+    </table>
+  </div>
+  
 {% endblock %} 
