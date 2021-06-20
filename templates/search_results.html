@@ -21,9 +21,15 @@
             <th scope="row">{{ item.item_name }}</th>
             <td>
                         <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#org{{ item }}">
+              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#org{{ item }}">
                 {{ item.location.org.org_name }}
-              </button>
+              </button> -->
+
+                <!-- Modal Trigger as Link instead of button  -->
+              
+                <a href="#org{{ item }}" class="trigger-btn" data-toggle="modal" data-target="#org{{ item }}">
+                  {{ item.location.org.org_name }}
+                </a>
 
               <!-- Modal -->
               <div class="modal fade" id="org{{ item }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,9 +55,15 @@
             </td>
             <td>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#location{{ item }}">
+              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#location{{ item }}">
                 {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
-              </button>
+              </button> -->
+
+              <!-- Modal Trigger as Link instead of button  -->
+        
+              <a href="#location{{ item }}" class="trigger-btn" data-toggle="modal" data-target="#location{{ item }}">
+                {{ item.location.city }}, {{ item.location.state }} {{ item.location.zip_code }}
+            </a>
 
               <!-- Modal -->
               <div class="modal fade" id="location{{ item }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
