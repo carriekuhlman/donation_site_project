@@ -14,19 +14,21 @@
     </section>
   </div>
 
-  <div class="row form-group">
+  <div class="row">
     <div class="col-md-4">
       <h3>Login</h3>
       <form action="/account", method="POST">
-        <label for="FormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="FormControlInput1" name = "email" placeholder="name@example.com">
+        <div class="form-group">
+          <label for="FormControlEmail1">Email Address</label>
+          <input type="email" class="form-control" id="FormControlEmail1" name = "email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="FormControlPassword1">Password</label>
+          <input type="password" class="form-control" id="FormControlPassowrd1" name = "password" placeholder="Enter Password">
+        </div>
         <button type="submit" class="btn btn-primary">Login</button>
-          
-        <p>Email <input type="text" name="email"></p>
-        <p>Password <input type="password" name="password"></p>
       </form>
     </div> 
-  </div>
 
     <div class="col-md-4">
       <h3>Create Account</h3>
