@@ -17,8 +17,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def homepage():
     """View homepage."""
 
-    if 'username' in session: 
-            flash("Logged in!")
+    # if 'username' in session: 
+    #         flash("Logged in!")
     return render_template('homepage.html')
 
 @app.route('/login')
@@ -88,8 +88,7 @@ def verify_user():
 
         else:     
             flash("An account with this email does not exist. Please create an account.")
-        
-        return redirect('/')
+            return redirect('/account-details')
 
     elif "username" in session and request.method == "GET": 
         user = crud.get_user_by_email(session["username"])
@@ -103,7 +102,7 @@ def verify_user():
 
     else:
         flash("Please log in.")
-        return redirect('/')
+        return redirect('/login')
 
 @app.route('/account-details')
 def account_details():

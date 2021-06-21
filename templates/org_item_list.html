@@ -2,7 +2,13 @@
 {% block title %}Current Listed Items{% endblock %} 
 
 {% block body %} 
-  <h2>Current Listed Items</h1>
+<div class="row align-items-center text-center" id="org_listed_items">
+  <section class="col-6 mx-auto">
+    <h2>Current Listed Items</h2>
+    <br />
+    <br />
+  </section>
+</div>
 
   <div class="table-responsive">
     <table class="table table-hover table-sm">
@@ -25,7 +31,7 @@
               </button> -->
 
               <!-- Modal Trigger as Link instead of button  -->
-              
+
               <a href="#org-location{{ item }}" class="trigger-btn" data-toggle="modal" data-target="#org-location{{ item }}">
                 {{ item.location.street_address }}
               </a>
