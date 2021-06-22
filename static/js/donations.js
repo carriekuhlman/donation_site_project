@@ -44,24 +44,24 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 
 
-// Show item search results
+// Show item search results. Function in progress. Not completed. 
 
-function displayItems(res) {
-  // $("#searched-item-info").html(results);
-  $("#item-name").text("This");
-  $("#item-id").text("Is");
-  $("#item-qty").text("Working");
-}
+// function displayItems(res) {
+//   // $("#searched-item-info").html(results);
+//   $("#item-name").text("This");
+//   $("#item-id").text("Is");
+//   $("#item-qty").text("Working");
+// }
 
-function showItems(evt) {
-  evt.preventDefault();
+// function showItems(evt) {
+//   evt.preventDefault();
 
-  let url = "/test.json"; 
-  let formData = {"searched-item": $("#item-field").val()};
+//   let url = "/test.json"; 
+//   let formData = {"searched-item": $("#item-field").val()};
 
-  $.get(url, formData, displayItems); 
+//   $.get(url, formData, displayItems); 
 
-}
+// }
 
-  $("#search-form").on('submit', showItems);
+//   $("#search-form").on('submit', showItems);
 

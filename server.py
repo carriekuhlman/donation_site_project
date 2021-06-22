@@ -27,18 +27,6 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/create-donor')
-def create_donor():
-    """Create donor account."""
-
-    return render_template('create_donor.html')
-
-@app.route('/create-org')
-def create_org():
-    """Create org account."""
-
-    return render_template('create_org.html')
-
 @app.route('/items')
 def search_items():
     """Search for item."""
@@ -206,10 +194,6 @@ def add_location():
     flash("Location added successfully.")
     return redirect('/account')
 
-@app.route('/view-locations')
-def view_locations(): 
-    """View current locations."""
-
 @app.route('/request-item', methods=["POST"])
 def request_item(): 
     """Add item to location."""
@@ -250,27 +234,43 @@ def user_logout():
 
     return redirect('/')
 
-@app.route("/test.json")
-def testing_ajax():
-    """Testing search functionality all on one page."""
+### OLD ROUTES ###  
 
-    searched_item = request.args.get("searched-item")
-    items = crud.search_items(searched_item)
+# @app.route("/test.json")
+# def testing_ajax():
+#     """Testing search functionality all on one page."""
+
+#     searched_item = request.args.get("searched-item")
+#     items = crud.search_items(searched_item)
     
-    if items: 
-        return jsonify({"status": "success",
-                        "item_name": searched_item,
-                        "item_id": 2, 
-                        "qty" : 10})
+#     if items: 
+#         return jsonify({"status": "success",
+#                         "item_name": searched_item,
+#                         "item_id": 2, 
+#                         "qty" : 10})
 
 
-@app.route("/testing")
-def testing_only():
-    """Testing search functionality all on one page."""
+# @app.route("/testing")
+# def testing_only():
+#     """Testing search functionality all on one page."""
 
-    return render_template("TESTING.html")
+#     return render_template("TESTING.html")
 
-### OLD ROUTES ###    
+# @app.route('/view-locations')
+# def view_locations(): 
+#     """View current locations."""
+# 
+# # @app.route('/create-donor')
+# def create_donor():
+#     """Create donor account."""
+
+#     return render_template('create_donor.html')
+
+# @app.route('/create-org')
+# def create_org():
+#     """Create org account."""
+
+#     return render_template('create_org.html')  
 
 # @app.route('/donor', methods=['POST'])
 # def register_donor():
