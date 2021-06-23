@@ -48,6 +48,7 @@ The organization account page includes the ability to add items and new location
 * Functionality for donor accounts to add items to their "to-donate" list for easy recall
 * Ability for org accounts to adjust item quantities needed and move items to different locations
 * Ability for org accounts to create an emailable/texatble/printable item receipt for donors in a few simple clicks
+* Deploy to AWS
 
 The goal is to make Donation Helper a one-stop-shop for both non-profits and donors to easily exchange goods. This will hopefully minimize waste and get donated goods into the hands of the small non-profits that need them.
 
