@@ -33,7 +33,7 @@ Once a user successfully creates either a donor or organization account, they wi
 
 The nav bar also allows for login, account access, item search and logging out.
 
-![alt text](https://github.com/carriekuhlman/donation_site_project/static/img/homepage.png "Donation Helper Homepage")
+![alt text](https://github.com/carriekuhlman/donation_site_project/blob/main/static/img/homepage.png "Donation Helper Homepage")
 
 #### User Account Page
 
