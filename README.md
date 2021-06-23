@@ -20,7 +20,7 @@ Carrie Kuhlman is a film school graduate turned tech enthusiast. In 2012, she st
 
 #### Database
 
-The app is built on a PostgreSQL database using 5 tables: Users, Donors, Orgs, Locations, and Items. Each registered account will have a record in the Users table, and either a record in the Donors or Orgs table. The user_id exists as a foreign key in both 
+The app is built on a PostgreSQL database using 5 tables: Users, Donors, Orgs, Locations, and Items. Each registered account will have a record in the Users table, and either a record in the Donors or Orgs table. A unique user_id exists as a foreign key in either the Donors or Orgs table, depending on account type. The Locations table references an org_id from the Orgs table as a foreign key. The Items table references a location_id from the Locations table as a foreign key.
 
 ![alt text](https://github.com/carriekuhlman/donation_site_project/blob/main/static/img/data_model.png "Donation Helper Data Model")
 
@@ -28,10 +28,9 @@ The app is built on a PostgreSQL database using 5 tables: Users, Donors, Orgs, L
 
 From the homepage users can login, create an account, or search the database for needed items. The radio buttons on the create account form utilize an event listener and execute an AJAX request to upon click to adjust the form fields based on selection. 
 
-If a user attempts to login to an account that does not exist, and Flask flash message will be generated and the user will be redirected to a create account page. 
-Once a user successfully creates either a donor or organization account, they will be prompted to log in to get to the user account the page. 
+If a user attempts to login to an account that does not exist, and Flask flash message will be generated and the user will be redirected to a create account page. Once a user successfully creates either a donor or organization account, they will be prompted to log in to get to the user account the page. 
 
-The nav bar also allows for login, account access, item search and logging out.
+The nav bar provides modals for login and item search. The nav bar also provides quick account page access and log out.
 
 ![alt text](https://github.com/carriekuhlman/donation_site_project/blob/main/static/img/homepage.png "Donation Helper Homepage")
 
@@ -45,12 +44,12 @@ The organization account page includes the ability to add items and new location
 
 ## Future Features
 
-* Google Maps or Geocodio API integration to search for items by geolocation
-* Functionality for donor accounts to add items to their "to-do" list
+* Google Maps or Geocodio API integration to search for items by zipcode proximity
+* Functionality for donor accounts to add items to their "to-donate" list for easy recall
 * Ability for org accounts to adjust item quantities needed and move items to different locations
 * Ability for org accounts to create an emailable/texatble/printable item receipt for donors in a few simple clicks
 
-The goal is to make Donation Helper a one-stop-shop for both non-profits and organizations to easily exchange goods. This will hopefully minimize waste and get donated goods into the hands of the small non-profits that need them.
+The goal is to make Donation Helper a one-stop-shop for both non-profits and donors to easily exchange goods. This will hopefully minimize waste and get donated goods into the hands of the small non-profits that need them.
 
 ## Installation
 To run Donation Helper on your own machine:
